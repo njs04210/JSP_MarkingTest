@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+	<security-role>
+		<role-name>guest</role-name>
+		<role-name>admin</role-name>
+	</security-role>
+	<security-constraint>
+		<display-name>MarkingTest Security</display-name>
+		<web-resource-collection>
+			<web-resource-name>MarkingTest</web-resource-name>
+			<description></description>
+			<url-pattern>/apply.jsp</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<description>권한 관리자명</description>
+			<role-name>guest</role-name>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+	<security-constraint>
+		<display-name>MarkingTest Security</display-name>
+		<web-resource-collection>
+			<web-resource-name>MarkingTest</web-resource-name>
+			<description></description>
+			<url-pattern>/adminMenu.jsp</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<description>권한 관리자명</description>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/login.jsp</form-login-page>
+			<form-error-page>/login_failed.jsp</form-error-page>
+		</form-login-config>
+	</login-config>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/exceptionNoPage.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/accessdenied.jsp</location>
+	</error-page>
+</web-app>
